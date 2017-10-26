@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _01.largestCommonEnd
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var strOne = Console.ReadLine().Split(' ').ToArray();
+            var strTwo = Console.ReadLine().Split(' ').ToArray();
+
+            var lenghtMin = Math.Min(strOne.Length, strTwo.Length);
+            string[] reverStrOne = strOne.Reverse().ToArray();
+            string[] reverStrTwo = strTwo.Reverse().ToArray();
+
+            var leftCounter = 0;
+            var rightCounter = 0;
+            for (int i = 0; i < lenghtMin; i++)
+            {
+                if (strOne[i] == strTwo[i])
+                {
+                    leftCounter++;
+                }
+               else if (reverStrOne[i] == reverStrTwo[i])
+                {
+                    rightCounter++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            PtintSum(rightCounter,leftCounter);           
+        }
+
+        private static void PtintSum(int rightCounter, int leftCounter)
+        {
+            if (leftCounter >= rightCounter)
+            {
+                Console.WriteLine(leftCounter);
+            }
+            else if (rightCounter > leftCounter)
+            {
+                Console.WriteLine(rightCounter);
+            }
+        }
+    }
+}
